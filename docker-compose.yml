@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./app  # Путь к Dockerfile для сервера.
+    ports:
+      - "3000:3000"  # Проброс порта для сервера Node.js.
+    environment:
+      POSTGRES_USER: postgres  # Имя пользователя PostgreSQL по умолчанию.
+      # POSTGRES_PASSWORD: your_password_here  # Установите ваш пароль.
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: postgres  # Имя базы данных по умолчанию.
+    depends_on:
+      - db  # Зависимость от базы данных.
+
+  db:
+    image: postgres:latest  # Используем образ PostgreSQL.
+    ports:
+      - "5432:5432"  # Проброс порта для PostgreSQL.
+    environment:
+      POSTGRES_USER: postgres  # Имя пользователя PostgreSQL по умолчанию.
+      # POSTGRES_PASSWORD: your_password_here  # Установите ваш пароль.
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: postgres  # Имя базы данных по умолчанию.
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # Сохраняем данные базы данных между перезапусками.
+
+volumes:
+  pgdata:

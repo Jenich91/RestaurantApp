@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(190, 190, 190)
+}
+
+span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    display: block;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.my_container {
+    display: grid;
+    gap: 50px;
+
+    grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . j"
+    ". . k";
+}
+
+.container_element {
+    background-color: whitesmoke;
+    border: 5px solid darkorange;
+    border-radius: 5px;
+    padding: 3em;
+    margin: 2em;
+}
+
+.single_column {
+    justify-self: end;
+}
+
+.btn_solid_border {
+    border: 5px solid;
+}
+
+.img-fluid {
+    max-width: 20vw;
+    display: block;
+    margin: auto;
+}
+
